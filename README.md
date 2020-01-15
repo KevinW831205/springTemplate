@@ -1,6 +1,6 @@
-#SpringBoot Template
+# SpringBoot Template
 
-##Dependencies
+## Dependencies
 Generated from: [start.spring.io](start.spring.io)  
 
 Dependencies in this project:  
@@ -8,3 +8,6 @@ Dependencies in this project:
 * H2 database
 * spring web
 * spring data jpa
+
+## gitIgnores:
+Node, macOS, Windows, Eclipse, Intellij, NotePadPP, SublimeText, VisualStudioCode
