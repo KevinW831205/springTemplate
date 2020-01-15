@@ -1,4 +1,4 @@
 package com.example.demo.model;
 
-public class TemplateModel {
+public class Template {
 }
