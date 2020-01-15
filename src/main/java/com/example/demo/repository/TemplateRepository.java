@@ -1,4 +1,9 @@
 package com.example.demo.repository;
 
-public interface TemplateRepository {
+import com.example.demo.model.Template;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface TemplateRepository extends CrudRepository<Template, Long> {
 }
