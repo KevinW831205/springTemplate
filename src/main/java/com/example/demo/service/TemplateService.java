@@ -34,7 +34,7 @@ public class TemplateService {
             return null;
         }
         templateRepository.save(template);
-        return templateInDatabase;
+        return template;
     }
 
     public Template delete(Long id) {
