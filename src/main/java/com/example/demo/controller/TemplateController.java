@@ -31,8 +31,8 @@ public class TemplateController {
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public ResponseEntity<?> create(@RequestBody Template template){
-        template = templateService.create(template);
-        ResponseEntity<?> responseEntity = new ResponseEntity<>(template ,HttpStatus.CREATED);
+        Template responseBody = templateService.create(template);
+        ResponseEntity<?> responseEntity = new ResponseEntity<>(responseBody ,HttpStatus.CREATED);
         return responseEntity;
     }
 }
