@@ -30,9 +30,6 @@ public class TemplateService {
 
     public Template update(Long id, Template template) {
         Template templateInDatabase = findById(id);
-        if(templateInDatabase == null){
-            return null;
-        }
         templateInDatabase.setField1(template.getField1());
         templateInDatabase.setField2(template.getField2());
         templateRepository.save(templateInDatabase);
