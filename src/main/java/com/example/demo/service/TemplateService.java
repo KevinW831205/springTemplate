@@ -20,4 +20,8 @@ public class TemplateService {
     public Iterable<Template> findAll() {
         return templateRepository.findAll();
     }
+
+    public Template create(Template template){
+        return templateRepository.save(template);
+    }
 }
