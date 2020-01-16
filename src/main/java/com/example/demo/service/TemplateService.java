@@ -20,11 +20,28 @@ public class TemplateService {
         return templateRepository.findAll();
     }
 
-    public Optional<Template> findById(Long id){
-        return templateRepository.findById(id);
+    public Template findById(Long id){
+        return templateRepository.findById(id).get();
     }
 
     public Template create(Template template){
         return templateRepository.save(template);
+    }
+
+    public Template update(Long id, Template template) {
+        Template templateInDatabase = findById(id);
+        if(templateInDatabase == null){
+            return null;
+        }
+        templateInDatabase.setField1(template.getField1());
+        templateInDatabase.setField2(template.getField2());
+        templateRepository.save(templateInDatabase);
+        return templateInDatabase;
+    }
+
+    public Template delete(Long id) {
+        Template template = findById(id);
+        templateRepository.delete(template);
+        return template;
     }
 }

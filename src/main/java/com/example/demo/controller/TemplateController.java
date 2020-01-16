@@ -33,7 +33,7 @@ public class TemplateController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> findById(@PathVariable Long id){
-        Optional<?> entity = templateService.findById(id);
+        Template entity = templateService.findById(id);
         ResponseEntity<?> response = new ResponseEntity<>(entity ,HttpStatus.OK);
         return response;
     }
@@ -45,5 +45,18 @@ public class TemplateController {
         return responseEntity;
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<?> create(@PathVariable Long id, @RequestBody Template template){
+        Template responseBody = templateService.update(id, template);
+        ResponseEntity responseEntity = new ResponseEntity<>(responseBody, HttpStatus.OK);
+        return responseEntity;
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<?> delete(@PathVariable Long id){
+        Template responseBody = templateService.delete(id);
+        ResponseEntity responseEntity = new ResponseEntity<>(responseBody, HttpStatus.OK);
+        return responseEntity;
+    }
 
 }
