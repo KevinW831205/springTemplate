@@ -6,11 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequestMapping(value = "/template")
 @Controller
@@ -22,17 +24,26 @@ public class TemplateController {
         this.templateService = templateService;
     }
 
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public ResponseEntity<?> findAll(){
         Iterable<Template> allEntity = templateService.findAll();
         ResponseEntity<?> response = new ResponseEntity<>(allEntity, HttpStatus.OK);
         return response;
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<?> findById(@PathVariable Long id){
+        Optional<?> entity = templateService.findById(id);
+        ResponseEntity<?> response = new ResponseEntity<>(entity ,HttpStatus.OK);
+        return response;
+    }
+
+    @RequestMapping(value = "/", method = RequestMethod.POST)
     public ResponseEntity<?> create(@RequestBody Template template){
         Template responseBody = templateService.create(template);
         ResponseEntity<?> responseEntity = new ResponseEntity<>(responseBody ,HttpStatus.CREATED);
         return responseEntity;
     }
+
+
 }
